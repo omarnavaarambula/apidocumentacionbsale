@@ -1,191 +1,258 @@
 openapi: 3.0.1
 info:
   title: API Bsale Shop.
-  description: Esta API se encarga del manejo de la Base de Datos sobre la empresa
-    Bsale shop.
+  description: Esta API se encarga del manejo de la Base de Datos sobre la empresa Bsale shop.
   version: 1.0.0
 servers:
-- url: https://bsale-app-js.herokuapp.com/api/v1/
+  - url: https://bsale-app-js.herokuapp.com/api/v1/
+  
 tags:
-- name: Categorys
-  description: Categoria de los productos
-- name: Products
-  description: Productos
+  - name: Categorys
+    description: Categoria de los productos
+
+  - name: Products
+    description: Productos 
 paths:
   /categorys:
     get:
       tags:
-      - Categorys
+        - Categorys
       description: Permite optener todas las categorias que se encuentran en la api
-      operationId: categorysGET
       parameters:
-      - name: id
-        in: query
-        description: IDentificacion de la Categoria
+      - in: query
+        name: id
         required: false
-        style: form
-        explode: true
+        type: int
+        description: IDentificacion de la Categoria
         schema:
           type: int
           example: 2
-      - name: name
-        in: query
-        description: Nombre de la Categoria
+      - in: query
+        name: name
         required: false
-        style: form
-        explode: true
+        type: string
+        description: Nombre de la Categoria
         schema:
           type: string
           example: pisco
-      x-swagger-router-controller: Categorys
+          
+      - in: body
+        description: Ejemplo
+        schema:
+          type: object
+          properties:
+            id:
+              type: int
+              description: id de categoria
+              example: '2'
+            nombre:
+              type: string
+              description: primer nombre
+              example: 'pisco'
+
   /categorys/:id:
     get:
       tags:
-      - Categorys
+        - Categorys
       description: Obtiene la categoria por el Id
-      operationId: categorysidGET
       parameters:
-      - name: id
-        in: query
-        description: IDentificacion de la Categoria
+      - in: query
+        name: id
         required: false
-        style: form
-        explode: true
+        type: int
+        description: IDentificacion de la Categoria
         schema:
           type: int
           example: 1
-      - name: name
-        in: query
-        description: Nombre de la Categoria
+      - in: query
+        name: name
         required: false
-        style: form
-        explode: true
+        description: Nombre de la Categoria
         schema:
           type: string
           example: bebida energetica
-      x-swagger-router-controller: Categorys
+        
+      - in: body
+        description: Ejemplo    
+        schema:     
+          type: object
+          properties:
+            id:
+              type: int
+              description: id de categoria
+              example: '1'
+            nombre:
+              type: string
+              description: segundo nodsdmbre
+              example: 'bebida energetica'  
+
+  paths:
   /products:
     get:
       tags:
-      - Products
+        - Products
       description: Permite obtener todos los productos de la API
-      operationId: productsGET
       parameters:
-      - name: id
-        in: query
-        description: IDentificacion del producto
+      - in: query
+        name: id
         required: false
-        style: form
-        explode: true
+        type: int
+        description: IDentificacion del producto
         schema:
           type: int
           example: 10
-      - name: name
-        in: query
-        description: Nombre del producto
+      - in: query
+        name: name
         required: false
-        style: form
-        explode: true
+        type: string
+        description: Nombre del producto
         schema:
           type: string
           example: PISCO ARTESANOS 35º
-      - name: url_image
-        in: query
-        description: URL de la imagen
+      - in: query
+        name: url_image
         required: false
-        style: form
-        explode: true
+        type: string
+        description: URL de la imagen
         schema:
           type: string
           example: https://dojiw2m9tvv09.cloudfront.net/11132/product/artesanos8818.jpg
-      - name: price
-        in: query
-        description: Precio del Producto
+      - in: query
+        name: price
         required: false
-        style: form
-        explode: true
+        type: int
+        description: Precio del Producto
         schema:
           type: float
           example: 3990
-      - name: discount
-        in: query
-        description: Descuento del Producto
+      - in: query
+        name: discount
         required: false
-        style: form
-        explode: true
+        type: int
+        description: Descuento del Producto
         schema:
           type: int
           example: 0
-      - name: category
-        in: query
-        description: Categoria del Producto
+      - in: query
+        name: category
         required: false
-        style: form
-        explode: true
+        type: int
+        description: Categoria del Producto
         schema:
           type: int
           example: 2
-      x-swagger-router-controller: Products
+      - in: body
+        description: Ejemplo    
+        schema:     
+          type: object
+          properties:
+            id:
+              type: int
+              description: id de categoria
+              example: '10'
+            nombre:
+              type: string
+              description: Nombre del  Producto
+              example: 'PISCO ARTESANOS 35º' 
+            url_image:
+              type: string
+              description: URL del  Producto
+              example: 'https://dojiw2m9tvv09.cloudfront.net/11132/product/artesanos8818.jpg' 
+            price:
+              type: int
+              description: Precio del Producto
+              example: '3990'
+            discount:
+              type: int
+              description: Descuento del Producto
+              example: '0'
+            category:
+              type: int
+              description: Categoria del Producto
+              example: '2'
+
   /products/:id:
     get:
       tags:
-      - Products
+        - Products
       description: Permite obtener el ID de el Producto que contiene la API
-      operationId: productsidGET
       parameters:
-      - name: id
-        in: query
-        description: IDentificacion del producto
+      - in: query
+        name: id
         required: false
-        style: form
-        explode: true
+        type: int
+        description: IDentificacion del producto
         schema:
           type: int
           example: 140
-      - name: name
-        in: query
-        description: Nombre del producto
+      - in: query
+        name: name
         required: false
-        style: form
-        explode: true
+        type: string
+        description: Nombre del producto
         schema:
           type: string
           example: ABSOLUT
-      - name: url_image
-        in: query
-        description: URL de la imagen
+      - in: query
+        name: url_image
         required: false
-        style: form
-        explode: true
+        type: string
+        description: URL de la imagen
         schema:
           type: string
           example: https://dojiw2m9tvv09.cloudfront.net/11132/product/absolut21381.png
-      - name: price
-        in: query
-        description: Precio del Producto
+      - in: query
+        name: price
         required: false
-        style: form
-        explode: true
+        type: int
+        description: Precio del Producto
         schema:
           type: float
           example: 8990
-      - name: discount
-        in: query
-        description: Descuento del Producto
+      - in: query
+        name: discount
         required: false
-        style: form
-        explode: true
+        type: int
+        description: Descuento del Producto
         schema:
           type: int
           example: 30
-      - name: category
-        in: query
-        description: Categoria del Producto
+      - in: query
+        name: category
         required: false
-        style: form
-        explode: true
+        type: int
+        description: Categoria del Producto
         schema:
           type: int
           example: 7
-      x-swagger-router-controller: Products
-components: {}
+      - in: body
+        description: Ejemplo    
+        schema:     
+          type: object
+          properties:
+            id:
+              type: int
+              description: id de categoria
+              example: '104'
+            nombre:
+              type: string
+              description: Nombre del  Producto
+              example: 'ABSOLUT' 
+            url_image:
+              type: string
+              description: URL del  Producto
+              example: 'https://dojiw2m9tvv09.cloudfront.net/11132/product/absolut21381.png' 
+            price:
+              type: int
+              description: Precio del Producto
+              example: '8990'
+            discount:
+              type: int
+              description: Descuento del Producto
+              example: '30'
+            category:
+              type: int
+              description: Categoria del Producto
+              example: '7'
+            
+           
